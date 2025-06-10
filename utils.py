@@ -151,10 +151,7 @@ def tsne(xdata, perplexity, max_iter, step, d, method="naive", theta=0.2, par=Fa
             grad = gradient([[early_exaggeration * pij[a][b] for b in range(n)] for a in range(n)], qij, Y[i])
 
         elif method == "bh":
-            if par:
-                grad = bh_gradient(early_exaggeration, pij, Y[i], y_neighbors, theta2, n, par, pool)
-            else:
-                grad = bh_gradient(early_exaggeration, pij, Y[i], y_neighbors, theta2, n, par)
+            grad = bh_gradient(early_exaggeration, pij, Y[i], y_neighbors, theta2, n, par, pool)
         else:
             raise ValueError("method must be 'bh' or 'exact'")
         # Update Y[i+1] = Y[i] - step*grad + alpha*(Y[i] - Y[i-1])

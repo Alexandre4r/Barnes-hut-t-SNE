@@ -1,7 +1,6 @@
 import bhsne.tree as tree
-import sys
 # epsilon pour éviter les divisions par zéro
-EPSILON = sys.float_info.epsilon
+from config import EPSILON
 
 
 def bh_gradient(ea, pij, ydata, y_neighbors, theta2, n, paralel=False, pool=None):

@@ -1,6 +1,5 @@
 import numpy as np
-
-EPS = 1e-3
+from config import EPSILON
 
 class Node:
 
@@ -31,7 +30,7 @@ class Node:
 
     def _is_duplicate(self, point1: np.array, point2: np.array):
 
-        return abs(point1[0] - point2[0]) < EPS and abs(point1[1] - point2[1]) < EPS
+        return abs(point1[0] - point2[0]) < EPSILON and abs(point1[1] - point2[1]) < EPSILON
 
     def find(self, body):
         t = self.L / 2
@@ -54,7 +53,7 @@ class Node:
             self.L2 = np.square(self.L)
 
         # cas limite(taille de l'arbre)
-        elif self.L < EPS:
+        elif self.L < EPSILON:
             pass
         else:
             if self.body is not None:

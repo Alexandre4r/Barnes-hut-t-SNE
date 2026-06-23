@@ -1,7 +1,7 @@
 import time
 import math
 import numpy as np
-from bhsne.barnes_hut import bh_gradient
+from barnes_hut import bh_gradient
 import multiprocessing
 
 def grid_search(diff_i, i, perplexity):

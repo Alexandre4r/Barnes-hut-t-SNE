@@ -1,6 +1,5 @@
-import time
-import math
 import numpy as np
+from config import THETA, T_STEP
 from barnes_hut import bh_gradient
 import multiprocessing
 
@@ -118,7 +117,7 @@ def gradient(pij, qij, ydata):
             grad[i][k] = 4.0 * s
     return grad
 
-def tsne(xdata, perplexity, max_iter, step, d, method="naive", theta=0.2, par=False):
+def tsne(xdata, perplexity, max_iter, step, d=T_STEP, method="naive", theta=THETA, par=False, early_exageration_iter = 500):
     theta2 = theta ** 2
     early_exaggeration = 8
     n = len(xdata)
@@ -142,7 +141,7 @@ def tsne(xdata, perplexity, max_iter, step, d, method="naive", theta=0.2, par=Fa
     list_cost = np.zeros(round(max_iter / 50))
     j=0
     while i < max_iter - 1:
-        if i >= 500:
+        if i >= early_exageration_iter:
             alpha = 0.8
             early_exaggeration = 1
 
